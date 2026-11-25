@@ -22,6 +22,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: 取回完整战斗页与字体
+        run: |
+          curl -fsSL "https://aka.doubaocdn.com/s/WOzUVc4aVt" -o index.html
+          mkdir -p assets
+          curl -fsSL "https://aka.doubaocdn.com/s/wWbsg4ujPL" -o assets/wenwu-serif-BwDQZnGf.woff2
+          sed -i 's#https://aka.doubaocdn.com/s/wWbsg4ujPL#./assets/wenwu-serif-BwDQZnGf.woff2#' index.html
       - uses: actions/configure-pages@v5
         with:
           enablement: true
